@@ -163,9 +163,10 @@ constexpr char GJ[] = "GJ";
 constexpr char MJ[] = "MJ";
 
 const uint8_t GAS_MBUS_ID = 1;
-const uint8_t WATER_MBUS_ID = 2;
-const uint8_t THERMAL_MBUS_ID = 3;
-const uint8_t SLAVE_MBUS_ID = 4;
+const uint8_t GAS2_MBUS_ID = 2;
+const uint8_t WATER_MBUS_ID = 3;
+const uint8_t THERMAL_MBUS_ID = 4;
+const uint8_t SLAVE_MBUS_ID = 5;
 
 #define DEFINE_FIELD(fieldname, value_t, obis, field_t, field_args...) \
   struct fieldname : field_t<fieldname, ##field_args> { \
@@ -294,6 +295,18 @@ DEFINE_FIELD(gas_valve_position, uint8_t, ObisId(0, GAS_MBUS_ID, 24, 4, 0), IntF
  * "hourly value") */
 DEFINE_FIELD(gas_delivered, TimestampedFixedValue, ObisId(0, GAS_MBUS_ID, 24, 2, 1), TimestampedFixedField, m3, dm3);
 
+DEFINE_FIELD(gas2_device_type, uint16_t, ObisId(0, GAS2_MBUS_ID, 24, 1, 0), IntField, none);
+
+/* Equipment identifier (Gas) */
+DEFINE_FIELD(gas2_equipment_id, String, ObisId(0, GAS2_MBUS_ID, 96, 1, 0), StringField, 0, 96);
+
+/* Valve position Gas (on/off/released) (Note: Removed in 4.0.7 / 4.2.2 / 5.0). */
+DEFINE_FIELD(gas2_valve_position, uint8_t, ObisId(0, GAS2_MBUS_ID, 24, 4, 0), IntField, none);
+
+/* Last 5-minute value (temperature converted), gas delivered to client
+ * in m3, including decimal values and capture time (Note: 4.x spec has
+ * "hourly value") */
+DEFINE_FIELD(gas2_delivered, TimestampedFixedValue, ObisId(0, GAS2_MBUS_ID, 24, 2, 1), TimestampedFixedField, m3, dm3);
 
 /* Device-Type */
 DEFINE_FIELD(thermal_device_type, uint16_t, ObisId(0, THERMAL_MBUS_ID, 24, 1, 0), IntField, none);

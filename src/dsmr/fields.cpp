@@ -198,6 +198,22 @@ constexpr ObisId gas_delivered::id;
 constexpr char gas_delivered::name_progmem[];
 constexpr const __FlashStringHelper *gas_delivered::name;
 
+constexpr ObisId gas2_device_type::id;
+constexpr char gas2_device_type::name_progmem[];
+constexpr const __FlashStringHelper *gas2_device_type::name;
+
+constexpr ObisId gas2_equipment_id::id;
+constexpr char gas2_equipment_id::name_progmem[];
+constexpr const __FlashStringHelper *gas2_equipment_id::name;
+
+constexpr ObisId gas2_valve_position::id;
+constexpr char gas2_valve_position::name_progmem[];
+constexpr const __FlashStringHelper *gas2_valve_position::name;
+
+constexpr ObisId gas2_delivered::id;
+constexpr char gas2_delivered::name_progmem[];
+constexpr const __FlashStringHelper *gas2_delivered::name;
+
 constexpr ObisId thermal_device_type::id;
 constexpr char thermal_device_type::name_progmem[];
 constexpr const __FlashStringHelper *thermal_device_type::name;
